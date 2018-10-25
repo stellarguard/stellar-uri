@@ -4,8 +4,11 @@ A TypeScript/JavaScript implementation of [SEP-0007](https://github.com/stellar/
 
 ## Installation
 
-NPM: `npm install @stellarguard/stellar-uri --save`
-Yarn: `npm add @stellarguard/stellar-uri`
+```bash
+npm install @stellarguard/stellar-uri --save
+# or
+yarn add @stellarguard/stellar-uri
+```
 
 ## Examples
 
