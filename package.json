@@ -1,6 +1,6 @@
 {
-  "name": "stellar-uri",
-  "version": "1.0.0",
+  "name": "@stellarguard/stellar-uri",
+  "version": "0.0.1",
   "description": "A TypeScript/JavaScript implementation of SEP-0007 style Stellar URIs.",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
@@ -52,9 +52,11 @@
     "node": ">=8.9"
   },
   "dependencies": {
+    "@types/stellar-sdk": "^0.10.3",
     "sha.js": "^2.4.11"
   },
   "devDependencies": {
+    "@types/sinon": "^5.0.5",
     "ava": "1.0.0-beta.7",
     "codecov": "^3.1.0",
     "cz-conventional-changelog": "^2.1.0",
@@ -63,7 +65,9 @@
     "nyc": "^13.0.1",
     "opn-cli": "^3.1.0",
     "prettier": "^1.14.3",
+    "sinon": "^7.0.0",
     "standard-version": "^4.4.0",
+    "stellar-sdk": "^0.11.0",
     "trash-cli": "^1.4.0",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.15.0",
