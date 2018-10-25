@@ -1,4 +1,3 @@
-import { URL } from 'url';
 import { StellarUri } from './stellar-uri';
 
 export class PayStellarUri extends StellarUri {

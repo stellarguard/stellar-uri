@@ -1,7 +1,6 @@
 // tslint:disable:no-expression-statement no-object-mutation
 import ava, { TestInterface } from 'ava';
 import { Keypair, StellarTomlResolver } from 'stellar-sdk';
-import { URL } from 'url';
 import { StellarUri as StellarUriBase } from './stellar-uri';
 
 import sinon from 'sinon';

@@ -1,5 +1,4 @@
 import { Keypair, StellarTomlResolver } from 'stellar-sdk';
-import { URL } from 'url';
 
 export abstract class StellarUri {
   protected uri: URL;

@@ -1,4 +1,3 @@
-import { URL } from 'url';
 import { PayStellarUri } from './pay-stellar-uri';
 import { StellarUri } from './stellar-uri';
 import { TransactionStellarUri } from './transaction-stellar-uri';

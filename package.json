@@ -32,8 +32,7 @@
     "reset": "git reset --hard && yarn",
     "clean": "trash build test",
     "all": "run-s reset test cov:check doc:html",
-    "prepare-release": "run-s all version doc:publish",
-    "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('stellar-uri must be installed with Yarn: https://yarnpkg.com/')\""
+    "prepare-release": "run-s all version doc:publish"
   },
   "scripts-info": {
     "info": "Display information about the package scripts",
@@ -52,8 +51,7 @@
     "node": ">=8.9"
   },
   "dependencies": {
-    "@types/stellar-sdk": "^0.10.3",
-    "sha.js": "^2.4.11"
+    "@types/stellar-sdk": "^0.10.3"
   },
   "devDependencies": {
     "@types/sinon": "^5.0.5",

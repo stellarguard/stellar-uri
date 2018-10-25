@@ -1,5 +1,4 @@
 import { Transaction } from 'stellar-sdk';
-import { URL } from 'url';
 import { StellarUri } from './stellar-uri';
 
 export class TransactionStellarUri extends StellarUri {
