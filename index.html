@@ -65,10 +65,14 @@
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
 				<h1 id="-stellarguard-stellar-uri">@stellarguard/stellar-uri</h1>
-				<p>A TypeScript/JavaScript implementation of <a href="https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0007.md">SEP-0007</a> style Stellar URIs.</p>
+				<p><a href="https://img.shields.io/npm/v/@stellarguard/stellar-uri.svg"><img src="https://img.shields.io/npm/v/@stellarguard/stellar-uri.svg" alt="Latest Version"></a>
+				<a href="https://img.shields.io/node/v/@stellarguard/stellar-uri.svg"><img src="https://img.shields.io/node/v/@stellarguard/stellar-uri.svg" alt="NodeJS Support"></a></p>
+				<p>A TypeScript/JavaScript implementation of <a href="https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0007.md">SEP-0007</a> style Stellar URIs for the browser or NodeJS.</p>
+				<p>Note: to use this package your in the browser it must support the <a href="https://developer.mozilla.org/en-US/docs/Web/API/URL#Browser_compatibility">URL interface</a>. If you would like to use it in a version not listed here consider <a href="https://www.npmjs.com/package/url-polyfill">using a polyfill</a>.</p>
 				<h2 id="installation">Installation</h2>
-				<p>NPM: <code>npm install @stellarguard/stellar-uri --save</code>
-				Yarn: <code>npm add @stellarguard/stellar-uri</code></p>
+				<pre><code class="language-bash">npm install @stellarguard/stellar-uri --save
+<span class="hljs-comment"># or</span>
+yarn add @stellarguard/stellar-uri</code></pre>
 				<h2 id="examples">Examples</h2>
 				<h3 id="parsing-a-uri-string-and-extracting-the-transaction">Parsing a URI string and extracting the transaction</h3>
 				<pre><code class="language-js"><span class="hljs-keyword">import</span> { parseStellarUri } <span class="hljs-keyword">from</span> <span class="hljs-string">'@stellarguard/stellar-uri'</span>;
