@@ -133,8 +133,9 @@ export abstract class StellarUri {
       data = data.replace(`&signature=${encodeURIComponent(signature)}`, '');
     }
 
+    // https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0007.md#request-signing
     return Buffer.concat([
-      Buffer.alloc(35, 0),
+      Buffer.alloc(35),
       Buffer.alloc(1, 4),
       Buffer.from('stellar.sep.7 - URI Scheme' + data)
     ]);
