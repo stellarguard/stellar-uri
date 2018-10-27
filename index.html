@@ -73,9 +73,14 @@
 				<pre><code class="language-bash">npm install @stellarguard/stellar-uri --save
 <span class="hljs-comment"># or</span>
 yarn add @stellarguard/stellar-uri</code></pre>
+				<h2 id="qr-codes">QR Codes</h2>
+				<p>This library does not handle generating a QR code for the Stellar URI.</p>
+				<p>Consider using an existing solution such as <a href="https://www.npmjs.com/package/qrcode">https://www.npmjs.com/package/qrcode</a>.</p>
+				<p>The <a href="https://stellarguard.github.io/stellar-uri/demo">demo</a> has an example of how that could be accomplished.</p>
 				<h2 id="examples">Examples</h2>
 				<h3 id="parsing-a-uri-string-and-extracting-the-transaction">Parsing a URI string and extracting the transaction</h3>
 				<pre><code class="language-js"><span class="hljs-keyword">import</span> { parseStellarUri } <span class="hljs-keyword">from</span> <span class="hljs-string">'@stellarguard/stellar-uri'</span>;
+<span class="hljs-keyword">import</span> { Transaction } <span class="hljs-keyword">from</span> <span class="hljs-string">'stellar-sdk'</span>;
 
 <span class="hljs-keyword">const</span> uri = parseStellarUri(
   <span class="hljs-string">'web+stellar:tx?xdr=AAAAAP%2Byw%2BZEuNg533pUmwlYxfrq6%2FBoMJqiJ8vuQhf6rHWmAAAAZAB8NHAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAEAAAAA%2F7LD5kS42DnfelSbCVjF%2Burr8GgwmqIny%2B5CF%2FqsdaYAAAAAAAAAAACYloAAAAAAAAAAAA'</span>
@@ -84,6 +89,7 @@ yarn add @stellarguard/stellar-uri</code></pre>
 <span class="hljs-keyword">const</span> transaction = <span class="hljs-keyword">new</span> Transaction(uri.xdr);</code></pre>
 				<h3 id="creating-and-signing-a-transaction-uri">Creating and signing a transaction URI</h3>
 				<pre><code class="language-js"><span class="hljs-keyword">import</span> { TransactionStellarUri } <span class="hljs-keyword">from</span> <span class="hljs-string">'@stellarguard/stellar-uri'</span>;
+<span class="hljs-keyword">import</span> { Transaction } <span class="hljs-keyword">from</span> <span class="hljs-string">'stellar-sdk'</span>;
 
 <span class="hljs-keyword">const</span> transaction = buildStellarTransaction(); <span class="hljs-comment">// a StellarSdk.Transaction</span>
 
@@ -93,6 +99,13 @@ uri.originDomain = <span class="hljs-string">'example.com'</span>;
 uri.addSignature(mySecretKey); <span class="hljs-comment">// example.com's URI_REQUEST_SIGNING_KEY</span>
 
 uri.toString(); <span class="hljs-comment">// web+stellar:tx?xdr=...&amp;msg=hello+from+me&amp;origin_domain=example.com&amp;signature=...</span></code></pre>
+				<h3 id="verifying-a-signature">Verifying a signature</h3>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> { parseStellarUri } <span class="hljs-keyword">from</span> <span class="hljs-string">'@stellarguard/stellar-uri'</span>;
+<span class="hljs-keyword">import</span> { Transaction } <span class="hljs-keyword">from</span> <span class="hljs-string">'stellar-sdk'</span>;
+
+<span class="hljs-keyword">const</span> uri = parseStellarUri(
+  <span class="hljs-string">'web+stellar:tx?xdr=AAAAAP%2Byw%2BZEuNg533pUmwlYxfrq6%2FBoMJqiJ8vuQhf6rHWmAAAAZAB8NHAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAEAAAAA%2F7LD5kS42DnfelSbCVjF%2Burr8GgwmqIny%2B5CF%2FqsdaYAAAAAAAAAAACYloAAAAAAAAAAAA'</span>
+);</code></pre>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
