@@ -28,7 +28,7 @@ export class PayStellarUri extends StellarUri {
   }
 
   get assetCode() {
-    return this.getParam('amount');
+    return this.getParam('asset_code');
   }
 
   set assetCode(assetCode) {
