@@ -20,5 +20,8 @@ export function parseStellarUri(uri: string): StellarUri {
 }
 
 export function isStellarUri(uri: string): boolean {
-  return uri.startsWith('web+stellar:');
+  return (
+    !!uri &&
+    (uri.startsWith('web+stellar:tx') || uri.startsWith('web+stellar:pay'))
+  );
 }

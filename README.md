@@ -15,12 +15,21 @@ npm install @stellarguard/stellar-uri --save
 yarn add @stellarguard/stellar-uri
 ```
 
+## QR Codes
+
+This library does not handle generating a QR code for the Stellar URI.
+
+Consider using an existing solution such as [https://www.npmjs.com/package/qrcode](https://www.npmjs.com/package/qrcode).
+
+The [demo](https://stellarguard.github.io/stellar-uri/demo) has an example of how that could be accomplished.
+
 ## Examples
 
 ### Parsing a URI string and extracting the transaction
 
 ```js
 import { parseStellarUri } from '@stellarguard/stellar-uri';
+import { Transaction } from 'stellar-sdk';
 
 const uri = parseStellarUri(
   'web+stellar:tx?xdr=AAAAAP%2Byw%2BZEuNg533pUmwlYxfrq6%2FBoMJqiJ8vuQhf6rHWmAAAAZAB8NHAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAEAAAAA%2F7LD5kS42DnfelSbCVjF%2Burr8GgwmqIny%2B5CF%2FqsdaYAAAAAAAAAAACYloAAAAAAAAAAAA'
@@ -33,6 +42,7 @@ const transaction = new Transaction(uri.xdr);
 
 ```js
 import { TransactionStellarUri } from '@stellarguard/stellar-uri';
+import { Transaction } from 'stellar-sdk';
 
 const transaction = buildStellarTransaction(); // a StellarSdk.Transaction
 
@@ -42,4 +52,15 @@ uri.originDomain = 'example.com';
 uri.addSignature(mySecretKey); // example.com's URI_REQUEST_SIGNING_KEY
 
 uri.toString(); // web+stellar:tx?xdr=...&msg=hello+from+me&origin_domain=example.com&signature=...
+```
+
+### Verifying a signature
+
+```js
+import { parseStellarUri } from '@stellarguard/stellar-uri';
+import { Transaction } from 'stellar-sdk';
+
+const uri = parseStellarUri(
+  'web+stellar:tx?xdr=AAAAAP%2Byw%2BZEuNg533pUmwlYxfrq6%2FBoMJqiJ8vuQhf6rHWmAAAAZAB8NHAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAEAAAAA%2F7LD5kS42DnfelSbCVjF%2Burr8GgwmqIny%2B5CF%2FqsdaYAAAAAAAAAAACYloAAAAAAAAAAAA'
+);
 ```
