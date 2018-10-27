@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.5"></a>
+## [0.1.5](https://github.com/pselden/stellar-uri/compare/v0.1.4...v0.1.5) (2018-10-27)
+
+
+### Bug Fixes
+
+* Properly return the 'memo' field in pay operations ([e4b56c2](https://github.com/pselden/stellar-uri/commit/e4b56c2))
+
+
+
 <a name="0.1.4"></a>
 ## [0.1.4](https://github.com/pselden/stellar-uri/compare/v0.1.3...v0.1.4) (2018-10-27)
 
