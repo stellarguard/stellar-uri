@@ -44,7 +44,7 @@ export class PayStellarUri extends StellarUri {
   }
 
   get memo() {
-    return this.getParam('asset_issuer');
+    return this.getParam('memo');
   }
 
   set memo(memo) {
