@@ -1,6 +1,6 @@
 {
   "name": "@stellarguard/stellar-uri",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A TypeScript/JavaScript implementation of SEP-0007 style Stellar URIs.",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",

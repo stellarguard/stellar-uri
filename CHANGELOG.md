@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.4"></a>
+## [0.1.4](https://github.com/pselden/stellar-uri/compare/v0.1.3...v0.1.4) (2018-10-27)
+
+
+### Bug Fixes
+
+* PayStellarUri properly gets asset_code and memo ([fa37a9f](https://github.com/pselden/stellar-uri/commit/fa37a9f))
+
+
+
 <a name="0.1.3"></a>
 ## [0.1.3](https://github.com/pselden/stellar-uri/compare/v0.1.2...v0.1.3) (2018-10-27)
 
