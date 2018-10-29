@@ -3,17 +3,17 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>@stellarguard/stellar-uri</title>
+	<title>StellarUriType | @stellarguard/stellar-uri</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body>
 <header>
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">@stellarguard/stellar-uri</a>
+					<a href="../index.html" class="title">@stellarguard/stellar-uri</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -53,114 +53,121 @@
 		<div class="container">
 			<ul class="tsd-breadcrumb">
 				<li>
-					<a href="globals.html">Globals</a>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="stellaruritype.html">StellarUriType</a>
 				</li>
 			</ul>
-			<h1> @stellarguard/stellar-uri</h1>
+			<h1>Enumeration StellarUriType</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<h1 id="-stellarguard-stellar-uri">@stellarguard/stellar-uri</h1>
-				<p><a href="https://img.shields.io/npm/v/@stellarguard/stellar-uri.svg"><img src="https://img.shields.io/npm/v/@stellarguard/stellar-uri.svg" alt="Latest Version"></a>
-				<a href="https://img.shields.io/node/v/@stellarguard/stellar-uri.svg"><img src="https://img.shields.io/node/v/@stellarguard/stellar-uri.svg" alt="NodeJS Support"></a></p>
-				<p>A TypeScript/JavaScript implementation of <a href="https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0007.md">SEP-0007</a> style Stellar URIs for the browser or NodeJS.</p>
-				<p>Note: to use this package your in the browser it must support the <a href="https://developer.mozilla.org/en-US/docs/Web/API/URL#Browser_compatibility">URL interface</a>. If you would like to use it in a version not listed here consider <a href="https://www.npmjs.com/package/url-polyfill">using a polyfill</a>.</p>
-				<h2 id="installation">Installation</h2>
-				<pre><code class="language-bash">npm install @stellarguard/stellar-uri --save
-<span class="hljs-comment"># or</span>
-yarn add @stellarguard/stellar-uri</code></pre>
-				<h2 id="qr-codes">QR Codes</h2>
-				<p>This library does not handle generating a QR code for the Stellar URI.</p>
-				<p>Consider using an existing solution such as <a href="https://www.npmjs.com/package/qrcode">https://www.npmjs.com/package/qrcode</a>.</p>
-				<p>The <a href="https://stellarguard.github.io/stellar-uri/demo">demo</a> has an example of how that could be accomplished.</p>
-				<h2 id="examples">Examples</h2>
-				<h3 id="parsing-a-uri-string-and-extracting-the-transaction">Parsing a URI string and extracting the transaction</h3>
-				<pre><code class="language-js"><span class="hljs-keyword">import</span> { parseStellarUri } <span class="hljs-keyword">from</span> <span class="hljs-string">'@stellarguard/stellar-uri'</span>;
-<span class="hljs-keyword">import</span> { Transaction } <span class="hljs-keyword">from</span> <span class="hljs-string">'stellar-sdk'</span>;
-
-<span class="hljs-keyword">const</span> uri = parseStellarUri(
-  <span class="hljs-string">'web+stellar:tx?xdr=AAAAAP%2Byw%2BZEuNg533pUmwlYxfrq6%2FBoMJqiJ8vuQhf6rHWmAAAAZAB8NHAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAEAAAAA%2F7LD5kS42DnfelSbCVjF%2Burr8GgwmqIny%2B5CF%2FqsdaYAAAAAAAAAAACYloAAAAAAAAAAAA'</span>
-);
-
-<span class="hljs-keyword">const</span> transaction = <span class="hljs-keyword">new</span> Transaction(uri.xdr);</code></pre>
-				<h3 id="creating-and-signing-a-transaction-uri">Creating and signing a transaction URI</h3>
-				<pre><code class="language-js"><span class="hljs-keyword">import</span> { TransactionStellarUri } <span class="hljs-keyword">from</span> <span class="hljs-string">'@stellarguard/stellar-uri'</span>;
-<span class="hljs-keyword">import</span> { Transaction } <span class="hljs-keyword">from</span> <span class="hljs-string">'stellar-sdk'</span>;
-
-<span class="hljs-keyword">const</span> transaction = buildStellarTransaction(); <span class="hljs-comment">// a StellarSdk.Transaction</span>
-
-<span class="hljs-keyword">const</span> uri = TransactionStellarUri.forTransaction(transaction);
-uri.msg = <span class="hljs-string">'hello from me'</span>;
-uri.originDomain = <span class="hljs-string">'example.com'</span>;
-uri.addSignature(mySecretKey); <span class="hljs-comment">// example.com's URI_REQUEST_SIGNING_KEY</span>
-
-uri.toString(); <span class="hljs-comment">// web+stellar:tx?xdr=...&amp;msg=hello+from+me&amp;origin_domain=example.com&amp;signature=...</span></code></pre>
-				<h3 id="verifying-a-signature">Verifying a signature</h3>
-				<pre><code class="language-js"><span class="hljs-keyword">import</span> { parseStellarUri } <span class="hljs-keyword">from</span> <span class="hljs-string">'@stellarguard/stellar-uri'</span>;
-<span class="hljs-keyword">import</span> { Transaction } <span class="hljs-keyword">from</span> <span class="hljs-string">'stellar-sdk'</span>;
-
-<span class="hljs-keyword">const</span> uri = parseStellarUri(
-  <span class="hljs-string">'web+stellar:pay?destination=GCALNQQBXAPZ2WIRSDDBMSTAKCUH5SG6U76YBFLQLIXJTF7FE5AX7AOO&amp;amount=120.1234567&amp;memo=skdjfasf&amp;msg=pay%20me%20with%20lumens&amp;origin_domain=someDomain.com&amp;signature=JTlGMGzxUv90P2SWxUY9xo%2BLlbXaDloend6gkpyylY8X4bUNf6%2F9mFTMJs7JKqSDPRtejlK1kQvrsJfRZSJeAQ%3D%3D'</span>
-);
-
-uri.verifySignature().then(<span class="hljs-function"><span class="hljs-params">isVerified</span> =&gt;</span> {
-  <span class="hljs-keyword">if</span> (isVerified) {
-    <span class="hljs-comment">// show origin domain</span>
-  } <span class="hljs-keyword">else</span> {
-    <span class="hljs-comment">// something is wrong, warn the user</span>
-  }
-});</code></pre>
-			</div>
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>The type of the Stellar URI.</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Enumeration members</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="stellaruritype.html#pay" class="tsd-kind-icon">Pay</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="stellaruritype.html#transaction" class="tsd-kind-icon">Transaction</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Enumeration members</h2>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+					<a name="pay" class="tsd-anchor"></a>
+					<h3>Pay</h3>
+					<div class="tsd-signature tsd-kind-icon">Pay<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;pay&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/stellarguard/stellar-uri/blob/b6737f3/src/lib/stellar-uri.ts#L8">lib/stellar-uri.ts:8</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+					<a name="transaction" class="tsd-anchor"></a>
+					<h3>Transaction</h3>
+					<div class="tsd-signature tsd-kind-icon">Transaction<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;tx&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/stellarguard/stellar-uri/blob/b6737f3/src/lib/stellar-uri.ts#L7">lib/stellar-uri.ts:7</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
 					<li class="globals  ">
-						<a href="globals.html"><em>Globals</em></a>
+						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum">
-						<a href="enums/stellaruritype.html" class="tsd-kind-icon">Stellar<wbr>Uri<wbr>Type</a>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-enum">
+						<a href="stellaruritype.html" class="tsd-kind-icon">Stellar<wbr>Uri<wbr>Type</a>
+						<ul>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="stellaruritype.html#pay" class="tsd-kind-icon">Pay</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="stellaruritype.html#transaction" class="tsd-kind-icon">Transaction</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-class">
+						<a href="../classes/paystellaruri.html" class="tsd-kind-icon">Pay<wbr>Stellar<wbr>Uri</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="classes/paystellaruri.html" class="tsd-kind-icon">Pay<wbr>Stellar<wbr>Uri</a>
+						<a href="../classes/stellaruri.html" class="tsd-kind-icon">Stellar<wbr>Uri</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="classes/stellaruri.html" class="tsd-kind-icon">Stellar<wbr>Uri</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/transactionstellaruri.html" class="tsd-kind-icon">Transaction<wbr>Stellar<wbr>Uri</a>
+						<a href="../classes/transactionstellaruri.html" class="tsd-kind-icon">Transaction<wbr>Stellar<wbr>Uri</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-is-not-exported">
-						<a href="globals.html#memotype" class="tsd-kind-icon">Memo<wbr>Type</a>
+						<a href="../globals.html#memotype" class="tsd-kind-icon">Memo<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#account" class="tsd-kind-icon">account</a>
+						<a href="../globals.html#account" class="tsd-kind-icon">account</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#pubkey" class="tsd-kind-icon">pub<wbr>Key</a>
+						<a href="../globals.html#pubkey" class="tsd-kind-icon">pub<wbr>Key</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#stellarpublickey" class="tsd-kind-icon">stellar<wbr>Public<wbr>Key</a>
+						<a href="../globals.html#stellarpublickey" class="tsd-kind-icon">stellar<wbr>Public<wbr>Key</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#stellarsecretkey" class="tsd-kind-icon">stellar<wbr>Secret<wbr>Key</a>
+						<a href="../globals.html#stellarsecretkey" class="tsd-kind-icon">stellar<wbr>Secret<wbr>Key</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#test" class="tsd-kind-icon">test</a>
+						<a href="../globals.html#test" class="tsd-kind-icon">test</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#isstellaruri" class="tsd-kind-icon">is<wbr>Stellar<wbr>Uri</a>
+						<a href="../globals.html#isstellaruri" class="tsd-kind-icon">is<wbr>Stellar<wbr>Uri</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#parsestellaruri" class="tsd-kind-icon">parse<wbr>Stellar<wbr>Uri</a>
+						<a href="../globals.html#parsestellaruri" class="tsd-kind-icon">parse<wbr>Stellar<wbr>Uri</a>
 					</li>
 				</ul>
 			</nav>
@@ -230,7 +237,7 @@ uri.verifySignature().then(<span class="hljs-function"><span class="hljs-params"
 	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>
