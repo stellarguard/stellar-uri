@@ -4,11 +4,11 @@ import { Button, CircularProgress, withStyles } from '@material-ui/core';
 
 import { StellarUri } from '../src';
 
-const styles = {
-  field: { padding: 4 }
-};
+const styles = () => ({
+  button: { marginTop: 4, marginBottom: 4 },
+  message: { marginTop: 4, marginBottom: 4 }
+});
 
-// tslint:disable-next-line:max-classes-per-file
 class ValidateSignature extends React.Component<
   {
     classes: any;
@@ -19,14 +19,24 @@ class ValidateSignature extends React.Component<
   public state: any = {};
 
   public render() {
+    const { classes } = this.props;
     const { isValid = false, loading = false, loaded = false } = this.state;
 
     return (
       <div>
-        {loaded && isValid && <div>Verified</div>}
-        {loaded && !isValid && <div>Not Verified</div>}
-        <Button onClick={this.validate}>
-          Verify Signature {loading && <CircularProgress />}
+        <div className={classes.message}>
+          {loaded && isValid && <div>Verified</div>}
+          {loaded && !isValid && <div>Not Verified</div>}
+        </div>
+        <Button
+          className={classes.button}
+          variant="contained"
+          color="primary"
+          size="small"
+          onClick={this.validate}
+          disabled={loading}
+        >
+          Verify Signature
         </Button>
       </div>
     );

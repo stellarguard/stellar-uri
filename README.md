@@ -15,15 +15,9 @@ npm install @stellarguard/stellar-uri --save
 yarn add @stellarguard/stellar-uri
 ```
 
-## QR Codes
-
-This library does not handle generating a QR code for the Stellar URI.
-
-Consider using an existing solution such as [https://www.npmjs.com/package/qrcode](https://www.npmjs.com/package/qrcode).
-
-The [demo](https://stellarguard.github.io/stellar-uri/demo) has an example of how that could be accomplished.
-
 ## Examples
+
+[See a live demo](https://stellarguard.github.io/stellar-uri/demo)
 
 ### Parsing a URI string and extracting the transaction
 
@@ -72,3 +66,11 @@ uri.verifySignature().then(isVerified => {
   }
 });
 ```
+
+## QR Codes
+
+This library does not handle generating a QR code for the Stellar URI.
+
+Consider using an existing solution such as [https://www.npmjs.com/package/qrcode](https://www.npmjs.com/package/qrcode).
+
+The [demo](https://stellarguard.github.io/stellar-uri/demo) has an example of how that could be accomplished.
