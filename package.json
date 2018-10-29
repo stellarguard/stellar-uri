@@ -52,6 +52,9 @@
   "engines": {
     "node": ">=8.9"
   },
+  "peerDependencies": {
+    "stellar-sdk": "*"
+  },
   "dependencies": {
     "@types/stellar-sdk": "^0.10.3"
   },
