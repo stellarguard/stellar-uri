@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/pselden/stellar-uri/compare/v0.1.8...v0.2.0) (2018-11-08)
+
+
+### Features
+
+* Add isTestNetwork/useTestNetwork, isPublicNetwork/usePublicNetwork ([658d769](https://github.com/pselden/stellar-uri/commit/658d769))
+
+
+
 <a name="0.1.8"></a>
 ## [0.1.8](https://github.com/pselden/stellar-uri/compare/v0.1.7...v0.1.8) (2018-10-29)
 
