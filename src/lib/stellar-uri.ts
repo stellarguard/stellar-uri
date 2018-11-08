@@ -1,4 +1,4 @@
-import { Keypair, StellarTomlResolver } from 'stellar-sdk';
+import { Keypair, Networks, StellarTomlResolver } from 'stellar-sdk';
 
 /**
  * The type of the Stellar URI.
@@ -81,6 +81,38 @@ export abstract class StellarUri {
    */
   set networkPassphrase(networkPassphrase) {
     this.setParam('network_passphrase', networkPassphrase);
+  }
+
+  /**
+   * Returns whether or not the network_passphase for this URI indicates that it is on the public network.
+   *
+   * This is true if network_passphrase is not set or if it's set to the public network's passphrase.
+   */
+  get isPublicNetwork() {
+    return (
+      !this.networkPassphrase || this.networkPassphrase === Networks.PUBLIC
+    );
+  }
+
+  /**
+   * Sets the network_passphrase to be the passphrase of the public network.
+   */
+  public usePublicNetwork() {
+    this.networkPassphrase = Networks.PUBLIC;
+  }
+
+  /**
+   * Returns whether or not the network_passphase for this URI indicates that it is on the test network.
+   */
+  get isTestNetwork() {
+    return this.networkPassphrase === Networks.TESTNET;
+  }
+
+  /**
+   * Sets the network_passphrase to be the passphrase of the test network.
+   */
+  public useTestNetwork() {
+    this.networkPassphrase = Networks.TESTNET;
   }
 
   /**

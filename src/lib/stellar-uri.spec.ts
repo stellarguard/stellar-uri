@@ -25,6 +25,7 @@ const stellarSecretKey =
 // making concrete class to test it
 class StellarUri extends StellarUriBase {}
 
+// we need to run them in serial because sinon stubs the "global" StellarTomlResolver import
 test.serial('constructor accepts a string uri', t => {
   const uriStr =
     'web+stellar:tx?xdr=test&callback=https%3A%2F%2Fexample.com%2Fcallback';
@@ -49,6 +50,22 @@ test.serial('constructor accepts URL uri', t => {
     'https://example.com/callback',
     'should not hold a reference to the original URL'
   );
+});
+
+test.serial('isTestNetwork/useTestNetwork', t => {
+  const uri = new StellarUri('web+stellar:tx');
+  t.false(uri.isTestNetwork);
+  uri.useTestNetwork();
+  t.true(uri.isTestNetwork);
+  t.is(uri.networkPassphrase, 'Test SDF Network ; September 2015');
+});
+
+test.serial('isPublicNetwork/usePublicNetwork', t => {
+  const uri = new StellarUri('web+stellar:tx');
+  t.true(uri.isPublicNetwork);
+  uri.usePublicNetwork();
+  t.true(uri.isPublicNetwork);
+  t.is(uri.networkPassphrase, 'Public Global Stellar Network ; September 2015');
 });
 
 test.serial('allows setting callback with or without "web:" prefix', t => {
