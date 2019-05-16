@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/pselden/stellar-uri/compare/v0.2.0...v1.0.0) (2019-05-16)
+
+
+### Chores
+
+* **deps:** Upgrade stellar-sdk to 1.0.2 ([64a4383](https://github.com/pselden/stellar-uri/commit/64a4383))
+
+
+### BREAKING CHANGES
+
+* **deps:** Removes @types/stellar-sdk as a dependency. Instead you should rely directly on the types from stellar-sdk
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/pselden/stellar-uri/compare/v0.1.8...v0.2.0) (2018-11-08)
 
