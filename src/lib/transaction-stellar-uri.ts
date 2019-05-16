@@ -9,7 +9,10 @@ import { StellarUri } from './stellar-uri';
 export class TransactionStellarUri extends StellarUri {
   public static forTransaction(transaction: Transaction) {
     const uri = new TransactionStellarUri();
-    uri.xdr = transaction.toEnvelope().toXDR('base64');
+    uri.xdr = transaction
+      .toEnvelope()
+      .toXDR()
+      .toString('base64');
     return uri;
   }
 

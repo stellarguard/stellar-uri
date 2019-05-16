@@ -55,9 +55,7 @@
   "peerDependencies": {
     "stellar-sdk": "*"
   },
-  "dependencies": {
-    "@types/stellar-sdk": "^0.10.3"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@material-ui/core": "^3.3.1",
     "@types/sinon": "^5.0.5",
@@ -76,7 +74,7 @@
     "react-dom": "^16.6.0",
     "sinon": "^7.0.0",
     "standard-version": "^4.4.0",
-    "stellar-sdk": "^0.11.0",
+    "stellar-sdk": "^1.0.2",
     "trash-cli": "^1.4.0",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.15.0",

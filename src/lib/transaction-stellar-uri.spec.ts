@@ -7,7 +7,7 @@ const pubKey = 'GD2FWJZFRDO6YCZV4G2JMVDFHJ2LYNYGYMBFSFYZ4MLMVJ4TBTJJIL7F';
 const account = new Account(pubKey, '1');
 
 test('forTransaction sets the tx parameter', t => {
-  const tx = new TransactionBuilder(account)
+  const tx = new TransactionBuilder(account, { fee: 100 })
     .addOperation(
       Operation.payment({
         amount: '1',
@@ -15,9 +15,13 @@ test('forTransaction sets the tx parameter', t => {
         destination: pubKey
       })
     )
+    .setTimeout(0)
     .build();
 
-  const xdr = tx.toEnvelope().toXDR('base64');
+  const xdr = tx
+    .toEnvelope()
+    .toXDR()
+    .toString('base64');
 
   const uri = TransactionStellarUri.forTransaction(tx);
   t.is(uri.operation, 'tx');
