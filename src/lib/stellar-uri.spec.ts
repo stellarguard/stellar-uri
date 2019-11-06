@@ -86,6 +86,99 @@ test.serial('allows setting callback with or without "web:" prefix', t => {
   );
 });
 
+test.serial('parses replacements', t => {
+  const uri = new StellarUri(
+    'web+stellar:tx?replace=sourceAccount%3AX%2Coperations%5B0%5D.sourceAccount%3AY%2Coperations%5B1%5D.destination%3AY%3BX%3Aaccount%20from%20where%20you%20want%20to%20pay%20fees%2CY%3Aaccount%20that%20needs%20the%20trustline%20and%20which%20will%20receive%20the%20new%20tokens'
+  );
+
+  const replacements = uri.getReplacements();
+  t.is(replacements.length, 3);
+
+  t.is(replacements[0].id, 'X');
+  t.is(replacements[0].path, 'sourceAccount');
+  t.is(replacements[0].hint, 'account from where you want to pay fees');
+
+  t.is(replacements[1].id, 'Y');
+  t.is(replacements[1].path, 'operations[0].sourceAccount');
+  t.is(
+    replacements[1].hint,
+    'account that needs the trustline and which will receive the new tokens'
+  );
+
+  t.is(replacements[2].id, 'Y');
+  t.is(replacements[2].path, 'operations[1].destination');
+  t.is(
+    replacements[2].hint,
+    'account that needs the trustline and which will receive the new tokens'
+  );
+});
+
+test.serial('addReplacement', t => {
+  const uri = new StellarUri('web+stellar:tx');
+  uri.addReplacement({
+    id: 'X',
+    path: 'sourceAccount',
+    hint: 'account from where you want to pay fees'
+  });
+
+  uri.addReplacement({
+    id: 'Y',
+    path: 'operations[0].sourceAccount',
+    hint:
+      'account that needs the trustline and which will receive the new tokens'
+  });
+
+  uri.addReplacement({
+    id: 'Y',
+    path: 'operations[1].destination',
+    hint:
+      'account that needs the trustline and which will receive the new tokens'
+  });
+
+  const expected =
+    'web+stellar:tx?replace=sourceAccount%3AX%2Coperations%5B0%5D.sourceAccount%3AY%2Coperations%5B1%5D.destination%3AY%3BX%3Aaccount+from+where+you+want+to+pay+fees%2CY%3Aaccount+that+needs+the+trustline+and+which+will+receive+the+new+tokens';
+  t.is(uri.toString(), expected);
+});
+
+test.serial('setReplacements', t => {
+  const uri = new StellarUri('web+stellar:tx');
+  uri.setReplacements([
+    {
+      id: 'X',
+      path: 'sourceAccount',
+      hint: 'account from where you want to pay fees'
+    },
+    {
+      id: 'Y',
+      path: 'operations[0].sourceAccount',
+      hint:
+        'account that needs the trustline and which will receive the new tokens'
+    },
+    {
+      id: 'Y',
+      path: 'operations[1].destination',
+      hint:
+        'account that needs the trustline and which will receive the new tokens'
+    }
+  ]);
+
+  const expected =
+    'web+stellar:tx?replace=sourceAccount%3AX%2Coperations%5B0%5D.sourceAccount%3AY%2Coperations%5B1%5D.destination%3AY%3BX%3Aaccount+from+where+you+want+to+pay+fees%2CY%3Aaccount+that+needs+the+trustline+and+which+will+receive+the+new+tokens';
+  t.is(uri.toString(), expected);
+});
+
+test.serial('removeReplacement', t => {
+  const uri = new StellarUri(
+    'web+stellar:tx?replace=sourceAccount%3AX%2Coperations%5B0%5D.sourceAccount%3AY%2Coperations%5B1%5D.destination%3AY%3BX%3Aaccount+from+where+you+want+to+pay+fees%2CY%3Aaccount+that+needs+the+trustline+and+which+will+receive+the+new+tokens'
+  );
+  uri.removeReplacement('Y');
+
+  t.is(uri.getReplacements().length, 1);
+  const expected =
+    'web+stellar:tx?replace=sourceAccount%3AX%3BX%3Aaccount+from+where+you+want+to+pay+fees';
+  t.is(uri.toString(), expected);
+});
+
 test.serial(
   'addSignature() signs the uri and adds a signature to the end',
   t => {
