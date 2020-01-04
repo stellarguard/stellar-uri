@@ -4,6 +4,11 @@ export type Replacement = {
   hint: string;
 };
 
+export type ReplacementValue = {
+  id: string;
+  value: string;
+};
+
 export class ReplacementsParser {
   private static TXN_HINT_SEPARATOR = ';';
   private static ID_SEPARATOR = ':';

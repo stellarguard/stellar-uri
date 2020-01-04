@@ -245,7 +245,11 @@ export abstract class StellarUri {
    * @param replacements A list of replacements to set.
    */
   public setReplacements(replacements: Replacement[]) {
-    this.setParam('replace', ReplacementsParser.toString(replacements));
+    if (replacements.length === 0) {
+      this.setParam('replace');
+    } else {
+      this.setParam('replace', ReplacementsParser.toString(replacements));
+    }
   }
 
   /**
