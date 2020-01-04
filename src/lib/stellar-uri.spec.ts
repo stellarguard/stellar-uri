@@ -23,7 +23,11 @@ const stellarSecretKey =
   'SBPOVRVKTTV7W3IOX2FJPSMPCJ5L2WU2YKTP3HCLYPXNI5MDIGREVNYC';
 
 // making concrete class to test it
-class StellarUri extends StellarUriBase {}
+class StellarUri extends StellarUriBase {
+  public clone(): StellarUriBase {
+    return new StellarUri(this.uri);
+  }
+}
 
 // we need to run them in serial because sinon stubs the "global" StellarTomlResolver import
 test.serial('constructor accepts a string uri', t => {

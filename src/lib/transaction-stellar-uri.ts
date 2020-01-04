@@ -23,6 +23,13 @@ export class TransactionStellarUri extends StellarUri {
   }
 
   /**
+   * Creates a deep clone of the TransactionStellarUri
+   */
+  public clone() {
+    return new TransactionStellarUri(this.uri);
+  }
+
+  /**
    * Creates a Stellar Transaction from the URI's XDR and networkPassphrase
    */
   public getTransaction(): Transaction {

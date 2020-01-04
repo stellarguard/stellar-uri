@@ -23,6 +23,11 @@ export abstract class StellarUri {
   }
 
   /**
+   * Creates a deep clone of the StellarUri.
+   */
+  public abstract clone(): StellarUri;
+
+  /**
    * Gets the operation type of the URI.
    *
    */
