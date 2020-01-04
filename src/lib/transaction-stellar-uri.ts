@@ -13,11 +13,20 @@ export class TransactionStellarUri extends StellarUri {
       .toEnvelope()
       .toXDR()
       .toString('base64');
+
+    uri.networkPassphrase = transaction.networkPassphrase;
     return uri;
   }
 
   constructor(uri?: URL | string) {
     super(uri ? uri : new URL('web+stellar:tx'));
+  }
+
+  /**
+   * Creates a Stellar Transaction from the URI's XDR and networkPassphrase
+   */
+  public getTransaction(): Transaction {
+    return new Transaction(this.xdr, this.networkPassphrase);
   }
 
   /**
