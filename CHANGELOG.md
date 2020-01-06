@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/pselden/stellar-uri/compare/v1.0.0...v1.1.0) (2020-01-06)
+
+
+### Bug Fixes
+
+* 🐛 Change the API for replace to just be a simple object ([a4735ea](https://github.com/pselden/stellar-uri/commit/a4735ea))
+* getTransaction uses Networks.PUBLIC if unset ([5634f1e](https://github.com/pselden/stellar-uri/commit/5634f1e))
+
+
+### Features
+
+* 🎸 Add `replace` method to TransactionStellarUri ([501919f](https://github.com/pselden/stellar-uri/commit/501919f))
+* add "replace" functionality. ([10eca50](https://github.com/pselden/stellar-uri/commit/10eca50))
+* Add a clone method for creating deep copies ([af5605e](https://github.com/pselden/stellar-uri/commit/af5605e))
+* Add a getTransaction method to TransactionStellarUri ([5bb1f70](https://github.com/pselden/stellar-uri/commit/5bb1f70))
+
+
+
 <a name="1.0.0"></a>
 # [1.0.0](https://github.com/pselden/stellar-uri/compare/v0.2.0...v1.0.0) (2019-05-16)
 
