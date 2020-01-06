@@ -5,7 +5,7 @@
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
-  "repository": "https://github.com/pselden/stellar-uri",
+  "repository": "https://github.com/stellarguard/stellar-uri",
   "license": "MIT",
   "keywords": [],
   "scripts": {
