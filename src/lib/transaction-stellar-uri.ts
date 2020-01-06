@@ -35,7 +35,7 @@ export class TransactionStellarUri extends StellarUri {
    * Creates a Stellar Transaction from the URI's XDR and networkPassphrase
    */
   public getTransaction(): Transaction {
-    return new Transaction(this.xdr, this.networkPassphrase);
+    return new Transaction(this.xdr, this.networkPassphrase || Networks.PUBLIC);
   }
 
   /**
