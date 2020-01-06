@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>StellarUriType | @stellarguard/stellar-uri</title>
+	<title>ReplacementsParser | @stellarguard/stellar-uri</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,58 +56,126 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="stellaruritype.html">StellarUriType</a>
+					<a href="replacementsparser.html">ReplacementsParser</a>
 				</li>
 			</ul>
-			<h1>Enumeration StellarUriType</h1>
+			<h1>Class ReplacementsParser</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>The type of the Stellar URI.</p>
-					</div>
-				</div>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">ReplacementsParser</span>
+					</li>
+				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
-							<h3>Enumeration members</h3>
+						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
+							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="stellaruritype.html#pay" class="tsd-kind-icon">Pay</a></li>
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="stellaruritype.html#transaction" class="tsd-kind-icon">Transaction</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="replacementsparser.html#id_separator" class="tsd-kind-icon">ID_<wbr>SEPARATOR</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="replacementsparser.html#list_separator" class="tsd-kind-icon">LIST_<wbr>SEPARATOR</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="replacementsparser.html#txn_hint_separator" class="tsd-kind-icon">TXN_<wbr>HINT_<wbr>SEPARATOR</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="replacementsparser.html#parse" class="tsd-kind-icon">parse</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="replacementsparser.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Enumeration members</h2>
-				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="pay" class="tsd-anchor"></a>
-					<h3>Pay</h3>
-					<div class="tsd-signature tsd-kind-icon">Pay<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;pay&quot;</span></div>
+			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="id_separator" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> ID_<wbr>SEPARATOR</h3>
+					<div class="tsd-signature tsd-kind-icon">ID_<wbr>SEPARATOR<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;:&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stellarguard/stellar-uri/blob/d440e79/src/lib/stellar-uri.ts#L10">lib/stellar-uri.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/stellarguard/stellar-uri/blob/d440e79/src/lib/replacement.ts#L9">lib/replacement.ts:9</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="transaction" class="tsd-anchor"></a>
-					<h3>Transaction</h3>
-					<div class="tsd-signature tsd-kind-icon">Transaction<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;tx&quot;</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="list_separator" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> LIST_<wbr>SEPARATOR</h3>
+					<div class="tsd-signature tsd-kind-icon">LIST_<wbr>SEPARATOR<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;,&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stellarguard/stellar-uri/blob/d440e79/src/lib/stellar-uri.ts#L9">lib/stellar-uri.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/stellarguard/stellar-uri/blob/d440e79/src/lib/replacement.ts#L10">lib/replacement.ts:10</a></li>
 						</ul>
 					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="txn_hint_separator" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> TXN_<wbr>HINT_<wbr>SEPARATOR</h3>
+					<div class="tsd-signature tsd-kind-icon">TXN_<wbr>HINT_<wbr>SEPARATOR<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;;&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/stellarguard/stellar-uri/blob/d440e79/src/lib/replacement.ts#L8">lib/replacement.ts:8</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="parse" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> parse</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">parse<span class="tsd-signature-symbol">(</span>str<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/stellarguard/stellar-uri/blob/d440e79/src/lib/replacement.ts#L12">lib/replacement.ts:12</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>str: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="tostring" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> to<wbr>String</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">to<wbr>String<span class="tsd-signature-symbol">(</span>replacements<span class="tsd-signature-symbol">: </span><a href="../globals.html#replacement" class="tsd-signature-type">Replacement</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/stellarguard/stellar-uri/blob/d440e79/src/lib/replacement.ts#L36">lib/replacement.ts:36</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>replacements: <a href="../globals.html#replacement" class="tsd-signature-type">Replacement</a><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -121,32 +189,41 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-enum">
+						<a href="../enums/stellaruritype.html" class="tsd-kind-icon">Stellar<wbr>Uri<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="paystellaruri.html" class="tsd-kind-icon">Pay<wbr>Stellar<wbr>Uri</a>
+					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-enum">
-						<a href="stellaruritype.html" class="tsd-kind-icon">Stellar<wbr>Uri<wbr>Type</a>
+					<li class="current tsd-kind-class">
+						<a href="replacementsparser.html" class="tsd-kind-icon">Replacements<wbr>Parser</a>
 						<ul>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="stellaruritype.html#pay" class="tsd-kind-icon">Pay</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
+								<a href="replacementsparser.html#id_separator" class="tsd-kind-icon">ID_<wbr>SEPARATOR</a>
 							</li>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="stellaruritype.html#transaction" class="tsd-kind-icon">Transaction</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
+								<a href="replacementsparser.html#list_separator" class="tsd-kind-icon">LIST_<wbr>SEPARATOR</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
+								<a href="replacementsparser.html#txn_hint_separator" class="tsd-kind-icon">TXN_<wbr>HINT_<wbr>SEPARATOR</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="replacementsparser.html#parse" class="tsd-kind-icon">parse</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="replacementsparser.html#tostring" class="tsd-kind-icon">to<wbr>String</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-class">
-						<a href="../classes/paystellaruri.html" class="tsd-kind-icon">Pay<wbr>Stellar<wbr>Uri</a>
+						<a href="stellaruri.html" class="tsd-kind-icon">Stellar<wbr>Uri</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="../classes/replacementsparser.html" class="tsd-kind-icon">Replacements<wbr>Parser</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="../classes/stellaruri.html" class="tsd-kind-icon">Stellar<wbr>Uri</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="../classes/transactionstellaruri.html" class="tsd-kind-icon">Transaction<wbr>Stellar<wbr>Uri</a>
+						<a href="transactionstellaruri.html" class="tsd-kind-icon">Transaction<wbr>Stellar<wbr>Uri</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-is-not-exported">
 						<a href="../globals.html#memotype" class="tsd-kind-icon">Memo<wbr>Type</a>

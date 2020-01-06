@@ -64,18 +64,26 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 id="-stellarguard-stellar-uri">@stellarguard/stellar-uri</h1>
+				<a href="#stellarguardstellar-uri" id="stellarguardstellar-uri" style="color: inherit; text-decoration: none;">
+					<h1>@stellarguard/stellar-uri</h1>
+				</a>
 				<p><a href="https://img.shields.io/npm/v/@stellarguard/stellar-uri.svg"><img src="https://img.shields.io/npm/v/@stellarguard/stellar-uri.svg" alt="Latest Version"></a>
 				<a href="https://img.shields.io/node/v/@stellarguard/stellar-uri.svg"><img src="https://img.shields.io/node/v/@stellarguard/stellar-uri.svg" alt="NodeJS Support"></a></p>
 				<p>A TypeScript/JavaScript implementation of <a href="https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0007.md">SEP-0007</a> style Stellar URIs for the browser or NodeJS.</p>
 				<p>Note: to use this package your in the browser it must support the <a href="https://developer.mozilla.org/en-US/docs/Web/API/URL#Browser_compatibility">URL interface</a>. If you would like to use it in a version not listed here consider <a href="https://www.npmjs.com/package/url-polyfill">using a polyfill</a>.</p>
-				<h2 id="installation">Installation</h2>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h2>Installation</h2>
+				</a>
 				<pre><code class="language-bash">npm install @stellarguard/stellar-uri --save
 <span class="hljs-comment"># or</span>
 yarn add @stellarguard/stellar-uri</code></pre>
-				<h2 id="examples">Examples</h2>
+				<a href="#examples" id="examples" style="color: inherit; text-decoration: none;">
+					<h2>Examples</h2>
+				</a>
 				<p><a href="https://stellarguard.github.io/stellar-uri/demo">See a live demo</a></p>
-				<h3 id="parsing-a-uri-string-and-extracting-the-transaction">Parsing a URI string and extracting the transaction</h3>
+				<a href="#parsing-a-uri-string-and-extracting-the-transaction" id="parsing-a-uri-string-and-extracting-the-transaction" style="color: inherit; text-decoration: none;">
+					<h3>Parsing a URI string and extracting the transaction</h3>
+				</a>
 				<pre><code class="language-js"><span class="hljs-keyword">import</span> { parseStellarUri } <span class="hljs-keyword">from</span> <span class="hljs-string">'@stellarguard/stellar-uri'</span>;
 <span class="hljs-keyword">import</span> { Transaction } <span class="hljs-keyword">from</span> <span class="hljs-string">'stellar-sdk'</span>;
 
@@ -83,8 +91,10 @@ yarn add @stellarguard/stellar-uri</code></pre>
   <span class="hljs-string">'web+stellar:tx?xdr=AAAAAP%2Byw%2BZEuNg533pUmwlYxfrq6%2FBoMJqiJ8vuQhf6rHWmAAAAZAB8NHAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAEAAAAA%2F7LD5kS42DnfelSbCVjF%2Burr8GgwmqIny%2B5CF%2FqsdaYAAAAAAAAAAACYloAAAAAAAAAAAA'</span>
 );
 
-<span class="hljs-keyword">const</span> transaction = <span class="hljs-keyword">new</span> Transaction(uri.xdr);</code></pre>
-				<h3 id="creating-and-signing-a-transaction-uri">Creating and signing a transaction URI</h3>
+<span class="hljs-keyword">const</span> transaction = uri.getTransaction(); <span class="hljs-comment">// a StellarSdk.Transaction</span></code></pre>
+				<a href="#creating-and-signing-a-transaction-uri" id="creating-and-signing-a-transaction-uri" style="color: inherit; text-decoration: none;">
+					<h3>Creating and signing a transaction URI</h3>
+				</a>
 				<pre><code class="language-js"><span class="hljs-keyword">import</span> { TransactionStellarUri } <span class="hljs-keyword">from</span> <span class="hljs-string">'@stellarguard/stellar-uri'</span>;
 <span class="hljs-keyword">import</span> { Transaction } <span class="hljs-keyword">from</span> <span class="hljs-string">'stellar-sdk'</span>;
 
@@ -96,7 +106,9 @@ uri.originDomain = <span class="hljs-string">'example.com'</span>;
 uri.addSignature(mySecretKey); <span class="hljs-comment">// example.com's URI_REQUEST_SIGNING_KEY</span>
 
 uri.toString(); <span class="hljs-comment">// web+stellar:tx?xdr=...&amp;msg=hello+from+me&amp;origin_domain=example.com&amp;signature=...</span></code></pre>
-				<h3 id="verifying-a-signature">Verifying a signature</h3>
+				<a href="#verifying-a-signature" id="verifying-a-signature" style="color: inherit; text-decoration: none;">
+					<h3>Verifying a signature</h3>
+				</a>
 				<pre><code class="language-js"><span class="hljs-keyword">import</span> { parseStellarUri } <span class="hljs-keyword">from</span> <span class="hljs-string">'@stellarguard/stellar-uri'</span>;
 <span class="hljs-keyword">import</span> { Transaction } <span class="hljs-keyword">from</span> <span class="hljs-string">'stellar-sdk'</span>;
 
@@ -111,7 +123,44 @@ uri.verifySignature().then(<span class="hljs-function"><span class="hljs-params"
     <span class="hljs-comment">// something is wrong, warn the user</span>
   }
 });</code></pre>
-				<h2 id="qr-codes">QR Codes</h2>
+				<a href="#replacements" id="replacements" style="color: inherit; text-decoration: none;">
+					<h3>Replacements</h3>
+				</a>
+				<p><code>TransactionStellarUri</code> supports replacing any part of the transaction by specifying a <a href="https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0011.md">SEP-0011 Txrep</a> path that should be replaced.</p>
+				<p>The following example shows how you might construct a <code>TransactionStellarUri</code> whose transaction source account and sequence number should be replaced, and then performs the replacement.</p>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> { TransactionStellarUri } <span class="hljs-keyword">from</span> <span class="hljs-string">'@stellarguard/stellar-uri'</span>;
+<span class="hljs-keyword">import</span> { Networks, Transaction } <span class="hljs-keyword">from</span> <span class="hljs-string">'stellar-sdk'</span>;
+
+<span class="hljs-comment">// zero'd out source account and 0 for sequence number (could be anything though)</span>
+<span class="hljs-keyword">const</span> tx = <span class="hljs-keyword">new</span> Transaction(
+  <span class="hljs-string">'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAEAAAAA/gEcLzyF1yWJzkNwfz1AKFmfxPXqtoXgkOGE/W7tEYAAAAAAAAAAADuaygAAAAAAAAAAAA=='</span>,
+  Networks.TESTNET
+);
+
+<span class="hljs-keyword">const</span> uri = TransactionStellarUri.forTransaction(tx);
+uri.addReplacement({
+  <span class="hljs-attr">id</span>: <span class="hljs-string">'SRC'</span>,
+  <span class="hljs-attr">path</span>: <span class="hljs-string">'sourceAccount'</span>,
+  <span class="hljs-attr">hint</span>: <span class="hljs-string">'source account'</span>
+});
+uri.addReplacement({ <span class="hljs-attr">id</span>: <span class="hljs-string">'SEQ'</span>, <span class="hljs-attr">path</span>: <span class="hljs-string">'seqNum'</span>, <span class="hljs-attr">hint</span>: <span class="hljs-string">'sequence number'</span> });
+
+uri.getReplacements(); <span class="hljs-comment">// same values that were added with addReplacement</span>
+uri.toString(); <span class="hljs-comment">// web+stellar:tx?xdr=...&amp;replace=tx.sourceAccount%3ASRC%2Ctx.seqNum%3ASEQ%3BSRC%3Asource+account%2CSEQ%3Asequence+number</span>
+
+<span class="hljs-comment">// now perform the replacements</span>
+<span class="hljs-comment">// this would usually be done in a different application than the one that originally constructed it</span>
+<span class="hljs-keyword">const</span> newUri = uri.replace({
+  <span class="hljs-attr">SRC</span>: <span class="hljs-string">'GALUXTZIBMJTK2CFVVPCGO6LIMIQLMXHAV22LI3LU6KXA6JL4IMQB5H6'</span>,
+  <span class="hljs-attr">SEQ</span>: <span class="hljs-string">'10'</span>
+});
+<span class="hljs-keyword">const</span> newTx = newUri.getTransaction();
+
+newTx.source; <span class="hljs-comment">// GAL...</span>
+newTx.sequence; <span class="hljs-comment">// 10</span></code></pre>
+				<a href="#qr-codes" id="qr-codes" style="color: inherit; text-decoration: none;">
+					<h2>QR Codes</h2>
+				</a>
 				<p>This library does not handle generating a QR code for the Stellar URI.</p>
 				<p>Consider using an existing solution such as <a href="https://www.npmjs.com/package/qrcode">https://www.npmjs.com/package/qrcode</a>.</p>
 				<p>The <a href="https://stellarguard.github.io/stellar-uri/demo">demo</a> has an example of how that could be accomplished.</p>
@@ -134,6 +183,9 @@ uri.verifySignature().then(<span class="hljs-function"><span class="hljs-params"
 						<a href="classes/paystellaruri.html" class="tsd-kind-icon">Pay<wbr>Stellar<wbr>Uri</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="classes/replacementsparser.html" class="tsd-kind-icon">Replacements<wbr>Parser</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="classes/stellaruri.html" class="tsd-kind-icon">Stellar<wbr>Uri</a>
 					</li>
 					<li class=" tsd-kind-class">
@@ -141,6 +193,9 @@ uri.verifySignature().then(<span class="hljs-function"><span class="hljs-params"
 					</li>
 					<li class=" tsd-kind-type-alias tsd-is-not-exported">
 						<a href="globals.html#memotype" class="tsd-kind-icon">Memo<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#replacement" class="tsd-kind-icon">Replacement</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#isstellaruri" class="tsd-kind-icon">is<wbr>Stellar<wbr>Uri</a>
@@ -165,6 +220,7 @@ uri.verifySignature().then(<span class="hljs-function"><span class="hljs-params"
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -213,7 +269,7 @@ uri.verifySignature().then(<span class="hljs-function"><span class="hljs-params"
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
