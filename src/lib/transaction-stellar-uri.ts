@@ -85,7 +85,6 @@ export class TransactionStellarUri extends StellarUri {
       .toEnvelope()
       .toXDR()
       .toString('base64');
-    newUri.networkPassphrase = newTx.networkPassphrase;
     return newUri;
   }
 }
