@@ -1,4 +1,5 @@
-import { Transaction } from 'stellar-sdk';
+import { toTransaction, toTxrep } from '@stellarguard/txrep';
+import { Networks, Transaction } from 'stellar-sdk';
 import { StellarUri } from './stellar-uri';
 
 /**
@@ -13,11 +14,27 @@ export class TransactionStellarUri extends StellarUri {
       .toEnvelope()
       .toXDR()
       .toString('base64');
+
+    uri.networkPassphrase = transaction.networkPassphrase;
     return uri;
   }
 
   constructor(uri?: URL | string) {
     super(uri ? uri : new URL('web+stellar:tx'));
+  }
+
+  /**
+   * Creates a deep clone of the TransactionStellarUri
+   */
+  public clone() {
+    return new TransactionStellarUri(this.uri);
+  }
+
+  /**
+   * Creates a Stellar Transaction from the URI's XDR and networkPassphrase
+   */
+  public getTransaction(): Transaction {
+    return new Transaction(this.xdr, this.networkPassphrase || Networks.PUBLIC);
   }
 
   /**
@@ -36,5 +53,38 @@ export class TransactionStellarUri extends StellarUri {
    */
   set xdr(xdr: string) {
     this.setParam('xdr', xdr);
+  }
+
+  /**
+   * Performs any replacements specified and returns a new instance of TransactionStellarUri with the resulting XDR.
+   *
+   * @param replacements The replacements to perform.
+   */
+  public replace(replacements: { [key: string]: any }): TransactionStellarUri {
+    const passphrase = this.isPublicNetwork
+      ? Networks.PUBLIC
+      : this.networkPassphrase;
+
+    const tx = this.getTransaction();
+    let txrep = toTxrep(tx);
+
+    const newUri = this.clone();
+    const replacementTargets = this.getReplacements();
+    for (const [id, value] of Object.entries(replacements)) {
+      replacementTargets
+        .filter(r => r.id === id)
+        .forEach(({ path }) => {
+          txrep += `\ntx.${path}: ${value}`;
+        });
+
+      newUri.removeReplacement(id);
+    }
+
+    const newTx = toTransaction(txrep, passphrase);
+    newUri.xdr = newTx
+      .toEnvelope()
+      .toXDR()
+      .toString('base64');
+    return newUri;
   }
 }

@@ -1,5 +1,7 @@
 import { Keypair, Networks, StellarTomlResolver } from 'stellar-sdk';
 
+import { Replacement, ReplacementsParser } from './replacement';
+
 /**
  * The type of the Stellar URI.
  */
@@ -19,6 +21,11 @@ export abstract class StellarUri {
   constructor(uri: URL | string) {
     this.uri = typeof uri === 'string' ? new URL(uri) : new URL(uri.toString());
   }
+
+  /**
+   * Creates a deep clone of the StellarUri.
+   */
+  public abstract clone(): StellarUri;
 
   /**
    * Gets the operation type of the URI.
@@ -230,6 +237,47 @@ export abstract class StellarUri {
       // if something fails we assume signature verification failed
       return false;
     }
+  }
+
+  /**
+   * Sets the "replace" key, which is a list of fields in the transaction that needs to be replaced.
+   *
+   * @param replacements A list of replacements to set.
+   */
+  public setReplacements(replacements: Replacement[]) {
+    if (replacements.length === 0) {
+      this.setParam('replace');
+    } else {
+      this.setParam('replace', ReplacementsParser.toString(replacements));
+    }
+  }
+
+  /**
+   * Gets a list of fields in the transaction that need to be replaced.
+   */
+  public getReplacements() {
+    return ReplacementsParser.parse(this.getParam('replace'));
+  }
+
+  /**
+   * Adds an additional replacement.
+   *
+   * @param replacement The replacement to add.
+   */
+  public addReplacement(replacement: Replacement) {
+    const replacements = this.getReplacements();
+    replacements.push(replacement);
+    this.setReplacements(replacements);
+  }
+
+  /**
+   * Removes all replacements with the given identifier.
+   *
+   * @param id The identifier to remove.
+   */
+  public removeReplacement(id: string) {
+    const replacements = this.getReplacements().filter(r => r.id !== id);
+    this.setReplacements(replacements);
   }
 
   /**

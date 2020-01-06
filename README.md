@@ -29,7 +29,7 @@ const uri = parseStellarUri(
   'web+stellar:tx?xdr=AAAAAP%2Byw%2BZEuNg533pUmwlYxfrq6%2FBoMJqiJ8vuQhf6rHWmAAAAZAB8NHAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAEAAAAA%2F7LD5kS42DnfelSbCVjF%2Burr8GgwmqIny%2B5CF%2FqsdaYAAAAAAAAAAACYloAAAAAAAAAAAA'
 );
 
-const transaction = new Transaction(uri.xdr);
+const transaction = uri.getTransaction(); // a StellarSdk.Transaction
 ```
 
 ### Creating and signing a transaction URI
@@ -65,6 +65,45 @@ uri.verifySignature().then(isVerified => {
     // something is wrong, warn the user
   }
 });
+```
+
+### Replacements
+
+`TransactionStellarUri` supports replacing any part of the transaction by specifying a [SEP-0011 Txrep](https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0011.md) path that should be replaced.
+
+The following example shows how you might construct a `TransactionStellarUri` whose transaction source account and sequence number should be replaced, and then performs the replacement.
+
+```js
+import { TransactionStellarUri } from '@stellarguard/stellar-uri';
+import { Networks, Transaction } from 'stellar-sdk';
+
+// zero'd out source account and 0 for sequence number (could be anything though)
+const tx = new Transaction(
+  'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAEAAAAA/gEcLzyF1yWJzkNwfz1AKFmfxPXqtoXgkOGE/W7tEYAAAAAAAAAAADuaygAAAAAAAAAAAA==',
+  Networks.TESTNET
+);
+
+const uri = TransactionStellarUri.forTransaction(tx);
+uri.addReplacement({
+  id: 'SRC',
+  path: 'sourceAccount',
+  hint: 'source account'
+});
+uri.addReplacement({ id: 'SEQ', path: 'seqNum', hint: 'sequence number' });
+
+uri.getReplacements(); // same values that were added with addReplacement
+uri.toString(); // web+stellar:tx?xdr=...&replace=tx.sourceAccount%3ASRC%2Ctx.seqNum%3ASEQ%3BSRC%3Asource+account%2CSEQ%3Asequence+number
+
+// now perform the replacements
+// this would usually be done in a different application than the one that originally constructed it
+const newUri = uri.replace({
+  SRC: 'GALUXTZIBMJTK2CFVVPCGO6LIMIQLMXHAV22LI3LU6KXA6JL4IMQB5H6',
+  SEQ: '10'
+});
+const newTx = newUri.getTransaction();
+
+newTx.source; // GAL...
+newTx.sequence; // 10
 ```
 
 ## QR Codes

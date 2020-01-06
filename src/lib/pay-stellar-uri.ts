@@ -24,6 +24,13 @@ export class PayStellarUri extends StellarUri {
   }
 
   /**
+   * Creates a deep clone of the PayStellarUri
+   */
+  public clone() {
+    return new PayStellarUri(this.uri);
+  }
+
+  /**
    * Gets the destination of the payment request, which is a valid account ID or payment address.
    *
    * Required.
