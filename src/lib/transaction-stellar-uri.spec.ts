@@ -74,18 +74,18 @@ test('performs replacements', t => {
 
   uri.addReplacement({
     id: 'SRC',
-    path: 'tx.sourceAccount',
+    path: 'sourceAccount',
     hint: 'source account'
   });
-  uri.addReplacement({ id: 'SEQ', path: 'tx.seqNum', hint: 'sequence number' });
-  uri.addReplacement({ id: 'FEE', path: 'tx.fee', hint: 'fee' });
+  uri.addReplacement({ id: 'SEQ', path: 'seqNum', hint: 'sequence number' });
+  uri.addReplacement({ id: 'FEE', path: 'fee', hint: 'fee' });
   const newSourceAccount =
     'GALUXTZIBMJTK2CFVVPCGO6LIMIQLMXHAV22LI3LU6KXA6JL4IMQB5H6';
   const newSequenceNumber = '10';
-  const newUri = uri.replace(
-    { id: 'SRC', value: newSourceAccount },
-    { id: 'SEQ', value: newSequenceNumber }
-  );
+  const newUri = uri.replace({
+    SRC: newSourceAccount,
+    SEQ: newSequenceNumber
+  });
   const newTx = newUri.getTransaction();
 
   // SRC and SEQ were replaced
@@ -93,7 +93,7 @@ test('performs replacements', t => {
   t.is(newTx.sequence, newSequenceNumber);
   // FEE was not consumed
   t.deepEqual(newUri.getReplacements(), [
-    { id: 'FEE', path: 'tx.fee', hint: 'fee' }
+    { id: 'FEE', path: 'fee', hint: 'fee' }
   ]);
 
   // original uri was not modified

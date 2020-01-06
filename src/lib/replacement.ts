@@ -4,11 +4,6 @@ export type Replacement = {
   hint: string;
 };
 
-export type ReplacementValue = {
-  id: string;
-  value: string;
-};
-
 export class ReplacementsParser {
   private static TXN_HINT_SEPARATOR = ';';
   private static ID_SEPARATOR = ':';
@@ -39,6 +34,10 @@ export class ReplacementsParser {
   }
 
   public static toString(replacements: Replacement[]) {
+    if (!replacements || replacements.length === 0) {
+      return '';
+    }
+
     const txns = replacements
       .map(r => `${r.path}${ReplacementsParser.ID_SEPARATOR}${r.id}`)
       .join(ReplacementsParser.LIST_SEPARATOR);

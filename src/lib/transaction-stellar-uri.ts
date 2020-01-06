@@ -1,6 +1,5 @@
 import { toTransaction, toTxrep } from '@stellarguard/txrep';
 import { Networks, Transaction } from 'stellar-sdk';
-import { ReplacementValue } from './replacement';
 import { StellarUri } from './stellar-uri';
 
 /**
@@ -61,7 +60,7 @@ export class TransactionStellarUri extends StellarUri {
    *
    * @param replacements The replacements to perform.
    */
-  public replace(...replacements: ReplacementValue[]): TransactionStellarUri {
+  public replace(replacements: { [key: string]: any }): TransactionStellarUri {
     const passphrase = this.isPublicNetwork
       ? Networks.PUBLIC
       : this.networkPassphrase;
@@ -71,11 +70,11 @@ export class TransactionStellarUri extends StellarUri {
 
     const newUri = this.clone();
     const replacementTargets = this.getReplacements();
-    for (const { id, value } of replacements) {
+    for (const [id, value] of Object.entries(replacements)) {
       replacementTargets
         .filter(r => r.id === id)
         .forEach(({ path }) => {
-          txrep += `\n${path}: ${value}`;
+          txrep += `\ntx.${path}: ${value}`;
         });
 
       newUri.removeReplacement(id);

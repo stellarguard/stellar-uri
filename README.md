@@ -86,24 +86,20 @@ const tx = new Transaction(
 const uri = TransactionStellarUri.forTransaction(tx);
 uri.addReplacement({
   id: 'SRC',
-  path: 'tx.sourceAccount',
+  path: 'sourceAccount',
   hint: 'source account'
 });
-uri.addReplacement({ id: 'SEQ', path: 'tx.seqNum', hint: 'sequence number' });
+uri.addReplacement({ id: 'SEQ', path: 'seqNum', hint: 'sequence number' });
 
 uri.getReplacements(); // same values that were added with addReplacement
 uri.toString(); // web+stellar:tx?xdr=...&replace=tx.sourceAccount%3ASRC%2Ctx.seqNum%3ASEQ%3BSRC%3Asource+account%2CSEQ%3Asequence+number
 
 // now perform the replacements
-// this would -- usually be done in a different application than the one that originally constructed it
-const newSequenceNumber = '10';
-const newUri = uri.replace(
-  {
-    id: 'SRC',
-    value: 'GALUXTZIBMJTK2CFVVPCGO6LIMIQLMXHAV22LI3LU6KXA6JL4IMQB5H6'
-  },
-  { id: 'SEQ', value: '10' }
-);
+// this would usually be done in a different application than the one that originally constructed it
+const newUri = uri.replace({
+  SRC: 'GALUXTZIBMJTK2CFVVPCGO6LIMIQLMXHAV22LI3LU6KXA6JL4IMQB5H6',
+  SEQ: '10'
+});
 const newTx = newUri.getTransaction();
 
 newTx.source; // GAL...
