@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.1"></a>
+## [1.1.1](https://github.com/stellarguard/stellar-uri/compare/v1.1.0...v1.1.1) (2020-01-21)
+
+
+### Bug Fixes
+
+* 🐛 Allow MAX_INT to be used for payment/limit replace ([39b7204](https://github.com/stellarguard/stellar-uri/commit/39b7204)), closes [#13](https://github.com/stellarguard/stellar-uri/issues/13)
+
+
+
 <a name="1.1.0"></a>
 
 # [1.1.0](https://github.com/stellarguard/stellar-uri/compare/v1.0.0...v1.1.0) (2020-01-06)
