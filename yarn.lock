@@ -1191,10 +1191,10 @@
   resolved "https://registry.yarnpkg.com/@sinonjs/text-encoding/-/text-encoding-0.7.1.tgz#8da5c6530915653f3a1f38fd5f101d8c3f8079c5"
   integrity sha512-+iTbntw2IZPb/anVDbypzfQa+ay64MW0Zo8aJ8gZPWMMK6/OubMVb6lUPMagqjOPnmtauXnFCACVl3O7ogjeqQ==
 
-"@stellarguard/txrep@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@stellarguard/txrep/-/txrep-1.0.5.tgz#8fe1c8f73e17bb34c42619cc65c6fe48acb0750a"
-  integrity sha512-aHdsDZHyEzYodQ3XnVfQ0NR6Um0F+KTVehlTEFXDZGmDW0UGmX3DNawABOfmErR49aYOPZ4fRfIX7JNCcmIq6g==
+"@stellarguard/txrep@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@stellarguard/txrep/-/txrep-1.0.6.tgz#bcc6e272e9b10cc3565b3a705477f89152dd4f1a"
+  integrity sha512-TOO5RXdrhsnZvIvLsE+Ds2lOIr6Izvu+AWOK620PCknHVbdMfbyS1Plknf8oZDVaVHITe87oBUBt2AFKVZSuWQ==
   dependencies:
     bignumber.js "^4.0.0"
 

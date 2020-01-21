@@ -99,3 +99,35 @@ test('performs replacements', t => {
   // original uri was not modified
   t.not(newUri.xdr, uri.xdr);
 });
+
+test('replace with MAX_INT', t => {
+  const tx = new TransactionBuilder(account, { fee: 100 })
+    .addOperation(
+      Operation.payment({
+        amount: '1',
+        asset: Asset.native(),
+        destination: pubKey
+      })
+    )
+    .setNetworkPassphrase(Networks.PUBLIC)
+    .setTimeout(0)
+    .build();
+
+  const uri = TransactionStellarUri.forTransaction(tx);
+
+  uri.addReplacement({
+    id: 'AMOUNT',
+    path: 'operations[0].body.paymentOp.amount',
+    hint: 'payment amount'
+  });
+
+  const newUri = uri.replace({
+    AMOUNT: '9223372036854775807'
+  });
+  const newTx = newUri.getTransaction();
+
+  t.is(
+    (newTx.operations[0] as Operation.Payment).amount,
+    '922337203685.4775807'
+  );
+});

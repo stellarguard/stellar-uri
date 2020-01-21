@@ -56,7 +56,7 @@
     "stellar-sdk": "*"
   },
   "dependencies": {
-    "@stellarguard/txrep": "^1.0.5"
+    "@stellarguard/txrep": "^1.0.6"
   },
   "devDependencies": {
     "@bitjson/typedoc": "^0.15.0-0",
