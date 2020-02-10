@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.2"></a>
+## [1.1.2](https://github.com/stellarguard/stellar-uri/compare/v1.1.1...v1.1.2) (2020-02-10)
+
+
+### Bug Fixes
+
+* 🐛 Bump stellar-sdk to 4.0.0, txrep to 1.0.7 ([3368019](https://github.com/stellarguard/stellar-uri/commit/3368019))
+
+
+
 <a name="1.1.1"></a>
 ## [1.1.1](https://github.com/stellarguard/stellar-uri/compare/v1.1.0...v1.1.1) (2020-01-21)
 
