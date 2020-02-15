@@ -2,6 +2,8 @@ import * as React from 'react';
 
 import { Button, TextField, Typography, withStyles } from '@material-ui/core';
 
+import { Keypair } from 'stellar-sdk';
+
 import { TransactionStellarUri } from '../src';
 import QRCode from './QRCode';
 import ValidateSignature from './ValidateSignature';
@@ -77,6 +79,46 @@ class ReplaceInner extends React.Component<any, any> {
 
 const Replace = withStyles(styles)(ReplaceInner);
 
+class AddSignature extends React.Component<any, any> {
+  public state = {
+    secretKey: ''
+  };
+
+  private onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ secretKey: event.target.value });
+  };
+
+  private onClick = () => {
+    this.props.onAddSignature({ secretKey: this.state.secretKey });
+  };
+
+  public render() {
+    const { secretKey } = this.state;
+
+    return (
+      <>
+        <TextField
+          label="Enter Secret Key"
+          onChange={this.onChange}
+          margin="dense"
+          value={secretKey}
+          fullWidth
+        />
+        <div>
+          <Button
+            variant="contained"
+            color="primary"
+            size="small"
+            onClick={this.onClick}
+          >
+            Add Signature
+          </Button>
+        </div>
+      </>
+    );
+  }
+}
+
 // tslint:disable-next-line:max-classes-per-file
 class TransactionUriSummary extends React.Component<{
   classes: any;
@@ -127,6 +169,9 @@ class TransactionUriSummary extends React.Component<{
         <Field label="signature">
           {stellarUri.signature && <ValidateSignature uri={stellarUri} />}
         </Field>
+        <Field label="Add New Signature">
+          <AddSignature onAddSignature={this.addSignature} />
+        </Field>
         <Field label="QR Code">
           <QRCode uri={stellarUri.toString()} />
         </Field>
@@ -137,6 +182,12 @@ class TransactionUriSummary extends React.Component<{
   private onReplace = replacementValues => {
     const newUri = this.props.stellarUri.replace(replacementValues);
     this.props.onUpdateStellarUri(newUri.toString());
+  };
+
+  private addSignature = ({ secretKey }) => {
+    const keypair = Keypair.fromSecret(secretKey);
+    this.props.stellarUri.addSignature(keypair);
+    this.props.onUpdateStellarUri(this.props.stellarUri.toString());
   };
 }
 

@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import { Typography, withStyles } from '@material-ui/core';
+import { Button, TextField, Typography, withStyles } from '@material-ui/core';
+import { Keypair } from 'stellar-sdk';
 
 import { PayStellarUri } from '../src';
 
@@ -25,9 +26,50 @@ class FieldInner extends React.Component<any, any> {
 
 const Field = withStyles(styles)(FieldInner);
 
+class AddSignature extends React.Component<any, any> {
+  public state = {
+    secretKey: ''
+  };
+
+  private onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ secretKey: event.target.value });
+  };
+
+  private onClick = () => {
+    this.props.onAddSignature({ secretKey: this.state.secretKey });
+  };
+
+  public render() {
+    const { secretKey } = this.state;
+
+    return (
+      <>
+        <TextField
+          label="Enter Secret Key"
+          onChange={this.onChange}
+          margin="dense"
+          value={secretKey}
+          fullWidth
+        />
+        <div>
+          <Button
+            variant="contained"
+            color="primary"
+            size="small"
+            onClick={this.onClick}
+          >
+            Add Signature
+          </Button>
+        </div>
+      </>
+    );
+  }
+}
+
 // tslint:disable-next-line:max-classes-per-file
 class PageUriSummary extends React.Component<{
   classes: any;
+  onUpdateStellarUri: any;
   stellarUri: PayStellarUri;
 }> {
   public render() {
@@ -62,12 +104,21 @@ class PageUriSummary extends React.Component<{
           {stellarUri.signature || '<none provided>'}
           {stellarUri.signature && <ValidateSignature uri={stellarUri} />}
         </Field>
+        <Field label="Add New Signature">
+          <AddSignature onAddSignature={this.addSignature} />
+        </Field>
         <Field label="QR Code">
           <QRCode uri={stellarUri.toString()} />
         </Field>
       </div>
     );
   }
+
+  private addSignature = ({ secretKey }) => {
+    const keypair = Keypair.fromSecret(secretKey);
+    this.props.stellarUri.addSignature(keypair);
+    this.props.onUpdateStellarUri(this.props.stellarUri.toString());
+  };
 }
 
 export default withStyles(styles)(PageUriSummary);
