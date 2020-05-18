@@ -13,7 +13,7 @@ const pubKey = 'GD2FWJZFRDO6YCZV4G2JMVDFHJ2LYNYGYMBFSFYZ4MLMVJ4TBTJJIL7F';
 const account = new Account(pubKey, '1');
 
 test('forTransaction sets the tx parameter', t => {
-  const tx = new TransactionBuilder(account, { fee: 100 })
+  const tx = new TransactionBuilder(account, { fee: '100' })
     .addOperation(
       Operation.payment({
         amount: '1',
@@ -58,7 +58,7 @@ test('allows adding xdr after construction', t => {
 });
 
 test('performs replacements', t => {
-  const tx = new TransactionBuilder(account, { fee: 100 })
+  const tx = new TransactionBuilder(account, { fee: '100' })
     .addOperation(
       Operation.payment({
         amount: '1',
@@ -101,7 +101,7 @@ test('performs replacements', t => {
 });
 
 test('replace with MAX_INT', t => {
-  const tx = new TransactionBuilder(account, { fee: 100 })
+  const tx = new TransactionBuilder(account, { fee: '100' })
     .addOperation(
       Operation.payment({
         amount: '1',
