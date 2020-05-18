@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/stellarguard/stellar-uri/compare/v1.1.3...v2.0.0) (2020-05-18)
+
+
+### Features
+
+* 🎸 Support Protocol 13 by bumping txrep and stellar-sdk ([6d1d458](https://github.com/stellarguard/stellar-uri/commit/6d1d458))
+
+
+### BREAKING CHANGES
+
+* 🧨 Requires stellar-sdk ^5.0.0 as a peerDependency
+
+
+
 <a name="1.1.3"></a>
 ## [1.1.3](https://github.com/stellarguard/stellar-uri/compare/v1.1.2...v1.1.3) (2020-02-15)
 
