@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/stellarguard/stellar-uri/compare/v2.0.0...v3.0.0) (2020-11-23)
+
+
+### Features
+
+* upgrade stellar-sdk to ^7.0.0 ([e56bdd3](https://github.com/stellarguard/stellar-uri/commit/e56bdd3))
+
+
+### BREAKING CHANGES
+
+* Requires stellar-sdk of ^7.0.0
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/stellarguard/stellar-uri/compare/v1.1.3...v2.0.0) (2020-05-18)
 
