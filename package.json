@@ -53,7 +53,7 @@
     "node": ">=10"
   },
   "peerDependencies": {
-    "stellar-sdk": "*"
+    "xdb-digitalbits-sdk": "*"
   },
   "dependencies": {
     "@stellarguard/txrep": "^2.0.0"

@@ -1,4 +1,4 @@
-import { Keypair, Networks, StellarTomlResolver } from 'stellar-sdk';
+import { Keypair, Networks, DigitalBitsTomlResolver } from 'xdb-digitalbits-sdk';
 
 import { Replacement, ReplacementsParser } from './replacement';
 
@@ -224,7 +224,7 @@ export abstract class StellarUri {
     }
 
     try {
-      const toml = await StellarTomlResolver.resolve(originDomain);
+      const toml = await DigitalBitsTomlResolver.resolve(originDomain);
       const signingKey = toml.URI_REQUEST_SIGNING_KEY;
 
       if (!signingKey) {

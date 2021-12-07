@@ -1,5 +1,5 @@
 import { toTransaction, toTxrep } from '@stellarguard/txrep';
-import { Networks, Transaction } from 'stellar-sdk';
+import { Networks, Transaction } from 'xdb-digitalbits-sdk';
 import { StellarUri } from './stellar-uri';
 
 /**
