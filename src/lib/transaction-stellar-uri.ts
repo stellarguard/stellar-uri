@@ -20,7 +20,7 @@ export class TransactionStellarUri extends StellarUri {
   }
 
   constructor(uri?: URL | string) {
-    super(uri ? uri : new URL('web+stellar:tx'));
+    super(uri ? uri : new URL('web+digitalbits:tx'));
   }
 
   /**
