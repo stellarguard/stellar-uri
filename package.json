@@ -52,11 +52,9 @@
   "engines": {
     "node": ">=10"
   },
-  "peerDependencies": {
-    "xdb-digitalbits-sdk": "*"
-  },
   "dependencies": {
-    "@stellarguard/txrep": "^2.0.0"
+    "@stellarguard/txrep": "^2.0.0",
+    "xdb-digitalbits-sdk": "^8.2.2"
   },
   "devDependencies": {
     "@bitjson/typedoc": "^0.15.0-0",
